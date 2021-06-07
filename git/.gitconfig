@@ -1,1 +1,5 @@
-/Users/erika/.gitconfig
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#	name = Erika Sánchez Femat
+#	email = esanchezf1201@alumno.ipn.mx
