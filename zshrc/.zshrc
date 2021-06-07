@@ -131,3 +131,4 @@ if [ -f '/Users/erika/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '
 
 eval "$(pyenv init -)"
 
+eval $(fuck --alias)
