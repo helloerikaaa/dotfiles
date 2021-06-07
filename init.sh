@@ -30,6 +30,9 @@ if [[ `uname` == "Darwin"   ]]; then
     echo "Installing Pipenv"
     pip install pipenv
 
+    echo "Removing existing dotfiles"
+    rm ~/.zshrc ~/.gitconfig ~/.hyper.js
+
     echo "Symlinking Files"
     ln -s ~/dotfiles/zshrc ~/.zshrc
     ln -s ~/dotfiles/git ~/.gitconfig
