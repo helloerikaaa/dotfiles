@@ -129,6 +129,9 @@ if [ -f '/Users/erika/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users
 if [ -f '/Users/erika/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erika/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
-eval $(fuck --alias)
+
+eval "$(thefuck --alias)"
