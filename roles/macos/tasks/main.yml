@@ -1,0 +1,52 @@
+---
+- name: Accept xcodebuild license
+  shell: xcodebuild -license accept
+  ignore_errors: yes
+  become: yes
+
+- name: Install Zsh packages
+  shell: brew install zsh zsh-completions zsh-autosuggestions openjdk
+
+- name: Tap fonts
+  homebrew_tap:
+    name: homebrew/cask-fonts
+    state: present
+
+- name: Install fira code
+  shell: brew tap homebrew/cask-fonts && brew install --cask font-fira-code
+
+- name: Install casks
+  shell: brew install --cask visual-studio-code lastpass slack hyper
+
+- name: Install pyenv
+  shell: brew install pyenv
+
+- name: Install python 3
+  command: "pyenv install 3.8.6"
+
+- name: Set python 3
+  command: "pyenv global 3.8.6"
+
+- name: Install Java 8
+  shell: brew tap AdoptOpenJDK/openjdk && brew install --cask adoptopenjdk/openjdk/adoptopenjdk8
+
+- name: Set Java 8
+  lineinfile:
+    path: ~/.zshrc
+    line: "export JAVA_HOME=`/usr/libexec/java_home -v 1.8`"
+    create: yes
+    state: present
+
+- name: Install Pipenv
+  shell: pip install pipenv
+
+- name: Install the fuck package
+  shell: brew install thefuck
+
+- name: Copy hyper.js config
+  template:
+    src: hyper.js
+    dest: ~/.hyper.js
+
+- name: Fix key repeat in hyper
+  shell: defaults write co.zeit.hyper ApplePressAndHoldEnabled -bool false
