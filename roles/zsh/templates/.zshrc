@@ -5,7 +5,7 @@ export PATH="/anaconda3/bin":$PATH
 
 export ZSH_DISABLE_COMPFIX="true"
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/erika/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -118,15 +118,7 @@ fi
 
 # Enhanced form of menu completion called `menu selection'
 zmodload -i zsh/complist
-source /Users/erika/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /Users/erika/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/erika/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/erika/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/erika/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/erika/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 export PYENV_ROOT="$HOME/.pyenv"
