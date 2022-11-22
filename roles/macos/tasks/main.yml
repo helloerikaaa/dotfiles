@@ -16,7 +16,7 @@
   shell: brew tap homebrew/cask-fonts && brew install --cask font-fira-code
 
 - name: Install casks
-  shell: brew install --cask visual-studio-code lastpass slack hyper
+  shell: brew install --cask visual-studio-code slack warp
 
 - name: Install pyenv
   shell: brew install pyenv
@@ -32,11 +32,6 @@
 
 - name: Install the fuck package
   shell: brew install thefuck
-
-- name: Copy hyper.js config
-  template:
-    src: hyper.js
-    dest: ~/.hyper.js
 
 - name: Fix key repeat in hyper
   shell: defaults write co.zeit.hyper ApplePressAndHoldEnabled -bool false
