@@ -32,6 +32,3 @@
 
 - name: Install the fuck package
   shell: brew install thefuck
-
-- name: Fix key repeat in hyper
-  shell: defaults write co.zeit.hyper ApplePressAndHoldEnabled -bool false
