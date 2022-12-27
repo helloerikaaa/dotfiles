@@ -1,8 +1,0 @@
----
-- name: Setup Home
-  hosts: local
-  become: no
-
-  roles:
-    - macos
-    - { role: zsh, tags: ["zsh"] }
