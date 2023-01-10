@@ -1,6 +1,15 @@
 # Dotfiles
 
-Dotfiles for macOS environment. To use them, execute the following command:
+The configuration files for my personal MacOS and Raspberry Pi devices. It includes basic configuration of Pi-Hole and Astroberry.
+
+# Installation
+
+For the proper utilization of this tool, gum is needed. Please follow the installation guide [here](https://github.com/charmbracelet/gum#installation).
+
+Once gum is installed, all you need to execute is the following command:
+
 ```bash
-bash install.sh
+sh install.sh
 ```
+
+Done! Now you can follow the instructions inside the tool to configure the dotfiles!
