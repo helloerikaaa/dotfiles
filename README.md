@@ -1,6 +1,6 @@
 # Dotfiles
 
-The configuration files for my personal MacOS and Raspberry Pi devices. It includes basic configuration of Pi-Hole and Astroberry.
+The configuration files for my personal MacOS devices.
 
 # Installation
 
