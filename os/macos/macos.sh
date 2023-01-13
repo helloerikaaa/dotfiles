@@ -19,8 +19,29 @@ if [[ `uname` == "Darwin" ]]; then
     pyenv install $PYVER
     pyenv global $PYVER
 
+    echo "Installing Git"
+    brew install git
+
+    echo "Configuring global user"
+    GIT_USER=$(gum input --prompt "Enter your github username: ")
+    GIT_EMAIL=$(gum input --prompt "Enter your github email: ")
+    git config --global user.name $GIT_USER
+    git config --global user.email $GIT_EMAIL
+
+    echo "Creating SSH key for Github repositories"
+    ID_NAME=$(gum input --prompt "Enter name for the ssh key: ")
+    ssh-keygen -t rsa $ID_NAME
+
+    echo "Configuring SSH key for the Github host"
+    touch "$HOME/.ssh/config"
+    echo "Host github.com" >> "$HOME/.ssh/config"
+    echo "UseKeychain yes" >> "$HOME/.ssh/config"
+    echo "AddKeysToAgent yes" >> "$HOME/.ssh/config"
+    echo "HostName github.com" >> "$HOME/.ssh/config"
+    echo "IdentityFile $HOME/.ssh/$ID_NAME" >> "$HOME/.ssh/config"
+
     echo "Installing the fuck"
-    brew install the fuck
+    brew install thefuck
 
     echo "Installing casks"
     brew tap homebrew/cask-fonts

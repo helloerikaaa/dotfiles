@@ -4,11 +4,11 @@ if [[ `uname` == "Darwin" ]]; then
     echo "MacOS detected"
 
     echo "Removing existing dotfiles"
-    rm -rf ~/.zshrc
+    rm -rf "$HOME/.config/nvim"
 
     echo "Installing neovim"
     brew install neovim
 
     echo "Installing astrovim"
-    git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+    git clone https://github.com/AstroNvim/AstroNvim "$HOME/.config/nvim"
 fi
