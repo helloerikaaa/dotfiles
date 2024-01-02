@@ -12,8 +12,12 @@ if [[ `uname` == "Darwin" ]]; then
     echo "Installing zInit"
     sh -c "$(curl -fsSL https://git.io/zinit-install)"
 
-    echo "Installing ZSH packages"
-    brew install zsh-completions zsh-autosuggestions
+    echo "Removing existing dotfiles"
+    rm -rf "$HOME/.zshrc"
+
+    echo "Configuring Oh My ZSH"
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
     echo "Creating symlinks"
     touch "$HOME/.zshrc"
@@ -24,5 +28,5 @@ if [[ `uname` == "Darwin" ]]; then
     git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
     echo "Applying changes"
-    source "$HOME/.zsh"
+    source "$HOME/.zshrc"
 fi
