@@ -6,14 +6,12 @@ gum style \
 	'Welcome to the dotfiles utility.' 'Setup your MacOS and Raspberry Pi devices' 'Feedback: @helloerikaaa on github'
 
 echo "Select the dependencies to install"
-DEP=$(gum choose "All" "Neovim" "ZSH")
+DEP=$(gum choose "MacOS" "Linux" "RasPi")
 
-if [[ $DEP == "All" ]]; then
+if [[ $DEP == "MacOS" ]]; then
 	sh ./os/macos/macos.sh
 	sh ./os/macos/zsh.sh
 	sh ./os/macos/neovim.sh
-elif [[ $DEP == "Neovim" ]]; then
-	sh ./os/macos/neovim.sh
-elif [[ $DEP == "ZSH" ]]; then
-	sh ./os/macos/zsh.sh
+elif [[ $DEP == "Linux" ]]; then
+	sh ./os/linux/ubuntu.sh
 fi
