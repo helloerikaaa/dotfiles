@@ -43,6 +43,14 @@ if [[ `uname` == "Darwin" ]]; then
     echo "Installing the fuck"
     brew install thefuck
 
+    echo "Installing UV for python dependencies"
+    brew install uv
+
+    echo "Install basic python packages"
+    uv venv ./.venv-default
+    source .venv-default/bin/activate
+    uv pip install pandas numpy matplotlib scikit-learn tqdm pillow ruff
+
     echo "Installing casks"
     brew tap homebrew/cask-fonts
     brew install --cask visual-studio-code warp font-fira-code

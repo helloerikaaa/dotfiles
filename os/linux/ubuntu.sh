@@ -48,8 +48,6 @@ if [[ $(uname) == "Linux" && -e /etc/lsb-release ]]; then
     echo "Configuring SSH key for the Github host"
     touch "$HOME/.ssh/config"
     echo "Host github.com" >> "$HOME/.ssh/config"
-    echo "UseKeychain yes" >> "$HOME/.ssh/config"
-    echo "AddKeysToAgent yes" >> "$HOME/.ssh/config"
     echo "HostName github.com" >> "$HOME/.ssh/config"
     echo "IdentityFile $HOME/.ssh/$ID_NAME" >> "$HOME/.ssh/config"
 
