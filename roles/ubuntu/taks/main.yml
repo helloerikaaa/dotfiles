@@ -1,0 +1,30 @@
+---
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  apt:
+    upgrade: yes
+    autoremove: yes
+
+- name: Install base packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  with_items:
+    - git 
+    - curl 
+    - vim 
+    - build-essential 
+    - gcc-9 
+    - g++-9
+    - libfuse2
+    - libssl-dev
+    - zlib1g-dev
+    - libbz2-dev
+    - libreadline-dev
+    - libsqlite3-dev
+    - llvm
+    - wget

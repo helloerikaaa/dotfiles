@@ -1,0 +1,8 @@
+---
+- name: Setup Ubuntu
+  hosts: local
+
+  roles:
+    - ubuntu
+    - { role: zsh, tags: ['zsh'] }
+    - { role: cuda, tags: ['cuda'] }

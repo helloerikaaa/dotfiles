@@ -1,0 +1,43 @@
+---
+- name: Install Ubuntu drivers common
+  apt:
+    name: ubuntu-drivers-common
+    state: present
+
+- name: Install NVIDIA driver
+  apt:
+    name: nvidia-driver-525
+    state: present
+
+- name: Download CUDA keyring
+  get_url:
+    url: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+    dest: /tmp/cuda-keyring_1.1-1_all.deb
+
+- name: Install CUDA keyring
+  dpkg:
+    path: /tmp/cuda-keyring_1.1-1_all.deb
+
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Install CUDA toolkit
+  apt:
+    name: cuda-toolkit-12-3
+    state: present
+
+- name: Add CUDA bin to PATH
+  blockinfile:
+    path: "~/.zshrc"
+    block: |
+      PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+
+- name: Add CUDA lib to LD_LIBRARY_PATH
+  blockinfile:
+    path: "~/.zshrc"
+    block: |
+      LD_LIBRARY_PATH=/usr/local/cuda-12.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+- name: Reload shell
+  shell: source "~/.zshrc"
