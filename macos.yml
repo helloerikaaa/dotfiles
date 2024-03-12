@@ -1,0 +1,7 @@
+---
+- name: Setup MacOS
+  hosts: local
+
+  roles:
+    - macos
+    - { role: zsh, tags: ['zsh'] }

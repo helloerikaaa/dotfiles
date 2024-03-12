@@ -1,0 +1,42 @@
+---
+- name: Accept xcodebuild license
+  shell: xcodebuild -license accept
+  ignore_errors: yes
+  become: yes
+
+- name: Install packages
+  shell: brew install vim neovim thefuck uv pyenv git zsh
+
+- name: Add zsh to /etc/shells
+  become: yes
+  lineinfile:
+    path: /etc/shells
+    line: '/usr/local/bin/zsh'
+
+- name: Remove existing neovim configuration
+  command: "rm -rf  ~/.config/nvim"
+
+- name: Install Astrovim
+  git:
+    repo: https://github.com/astrovim/astrovim.git
+    dest: ~/.config/nvim
+
+- name: Change shell
+  become_user: root
+  command: "chsh -s /bin/zsh {{ lookup('env','USER') }}"
+
+- name: Tap fonts
+  homebrew_tap:
+    name: homebrew/cask-fonts
+    state: present
+
+- name: Tap versions
+  homebrew_tap:
+    name: caskroom/versions
+    state: absent
+
+- name: Install fira code
+  shell: brew tap homebrew/cask-fonts && brew install --cask font-fira-code font-hack-nerd-font
+
+- name: Install casks
+  shell: brew install --cask docker visual-studio-code warp bruno
